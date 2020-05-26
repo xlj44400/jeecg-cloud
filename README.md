@@ -7,6 +7,8 @@ Jeecg-Cloud 快速开发平台
 - 前端采用 ant-design-vue，简单易用封装各种组件，轻松满足企业级项目需求
 - 更多功能介绍，请参考 [JeecgBoot版本](https://github.com/zhangdaiscott/jeecg-boot)
 
+<a href="http://doc.cloud.jeecg.com" target="_blank">部署文档</a>  | <a target="_blank" href="http://boot.jeecg.com"> 在线体验</a> | <a target="_blank" href="http://www.jeecg.com"> 官方网站</a> 
+
 ### 技术体系
 
 
@@ -66,6 +68,7 @@ jeecg-cloud
 │    ├── jeecg-common-cloud -- 集成springcloud依赖
 │    ├── jeecg-common-cloud-starter -- jeecg cloud quick starter
 ├── jeecg-cloud-gateway -- Spring Cloud Gateway网关[9999]
+├── jeecg-cloud-monitor -- Spring Boot admin监控服务[9111]
 ├── jeecg-cloud-system -- 用户权限系统管理模块
 │    └── jeecg-cloud-system-api -- 用户权限管理系统——公共api
 │    └── jeecg-cloud-system-biz -- 用户权限管理系统——业务管理模块[8001]
