@@ -1,0 +1,73 @@
+spring:
+  redis:
+    host: 127.0.0.1
+    password: ''
+    port: 6379
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowCredentials: true
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      routes:
+        #nacos
+        - id: jeecg-cloud-demo-biz
+          uri: lb://jeecg-cloud-demo-biz
+          predicates:
+          - Path=/demo/**
+          #限流配置
+          filters:
+          - name: RequestRateLimiter
+            args:
+              key-resolver: '#{@ipKeyResolver}'
+              redis-rate-limiter.replenishRate: 10
+              redis-rate-limiter.burstCapacity: 20
+          #降级配置
+          - name: Hystrix
+            args:
+              name: default
+              fallbackUri: 'forward:/fallback'
+        - id: jeecg-cloud-system-biz
+          uri: lb://jeecg-cloud-system-biz
+          predicates:
+          - Path=/sys/**,/test/**,/online/**,/api/**,/big/screen/**,/bigscreen/**,/webSocketApi/**
+          #限流配置
+          filters:
+          - name: RequestRateLimiter
+            args:
+              key-resolver: '#{@ipKeyResolver}'
+              redis-rate-limiter.replenishRate: 10
+              redis-rate-limiter.burstCapacity: 20
+          #降级配置
+          - name: Hystrix
+            args:
+              name: default
+              fallbackUri: 'forward:/fallback'
+        - id: jeecg-cloud-websocket
+          uri: lb:ws://jeecg-cloud-system-biz
+          predicates:
+            - Path=/websocket/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+# hystrix 信号量隔离，3秒后自动超时
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 3000
+  shareSecurityContext: true
+# 验证配置生效
+jeecg:
+  test: 123456

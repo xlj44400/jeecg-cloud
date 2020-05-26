@@ -1,0 +1,30 @@
+-- author:taoyan--------date:20200522-------for：system 开放服务接口 新增日志 数据权限 dict注解
+src\main\java\org\jeecg\modules\system\aspect\DictAspect.java
+src\main\java\org\jeecg\modules\system\aspect\PermissionDataAspect.java
+src\main\java\org\jeecg\modules\system\aspect\AutoLogAspect.java
+src\main\java\org\jeecg\modules\api\SysUserRemoteApi.java
+src\main\java\org\jeecg\modules\api\SysBaseRemoteApi.java
+src\main\java\org\jeecg\config\ShiroConfig.java
+-- author:taoyan--------date:20200522-------for：system 开放服务接口 新增日志 数据权限 dict注解
+
+-- author:scott--------date:20200525-------for：删除不需要公开的entity、vo
+src\main\java\org\jeecg\modules\quartz\entity(-)
+src\main\java\org\jeecg\modules\oss\entity(-)
+src\main\java\org\jeecg\modules\monitor\domain(-)
+src\main\java\org\jeecg\modules\demo\test\entity(-)
+src\main\java\org\jeecg\modules\demo\test\vo(-)
+src\main\java\org\jeecg\modules\message\entity(-)
+-- author:scott--------date:20200525-------for：删除不需要公开的entity、vo
+
+-- author:scott--------date:20200525-------for：排除token验证所需要的接口------
+org/jeecg/modules/api/SysUserRemoteApi.java
+org/jeecg/config/ShiroConfig.java
+-- author:scott--------date:20200525-------for：排除token验证所需要的接口------
+
+-- author:scott--------date:20200525-------for：shrio 二次校验token是否串改，通过redis获取用户信息，不再读取数据库，提供并发性能
+org/jeecg/modules/shiro/authc/ShiroRealm.java
+-- author:scott--------date:20200525-------for：shrio 二次校验token是否串改，通过redis获取用户信息，不再读取数据库，提供并发性能
+
+-- author:scott--------date:20200526-------for：增加spring admin监控
+org/jeecg/config/ShiroConfig.java
+-- author:scott--------date:20200526-------for：增加spring admin监控

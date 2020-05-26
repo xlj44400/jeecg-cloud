@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>jeecg-common-core</artifactId>
+
+	<parent>
+		<groupId>org.jeecgframework.cloud</groupId>
+		<artifactId>jeecg-cloud</artifactId>
+		<version>2.2.0</version>
+	</parent>
+	
+	<repositories>
+		<repository>
+			<id>aliyun</id>
+			<name>aliyun Repository</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>jeecg</id>
+			<name>jeecg Repository</name>
+			<url>http://maven.jeecg.org/nexus/content/repositories/jeecg</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.8.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.4</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!--shiro-->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring-boot-starter</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.crazycake</groupId>
+			<artifactId>shiro-redis</artifactId>
+			<version>3.1.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.shiro</groupId>
+					<artifactId>shiro-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>guava</artifactId>
+					<groupId>com.google.guava</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- web -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<!--排除（去除）tomcat依赖-->
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- websocket -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+			<exclusions>
+				<!--排除（去除）tomcat依赖-->
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!--undertow容器-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-undertow</artifactId>
+		</dependency>
+		<!-- web -->
+	</dependencies>
+
+</project>

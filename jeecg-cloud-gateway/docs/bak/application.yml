@@ -1,0 +1,42 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: '@artifactId@'
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowCredentials: true
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      routes:
+      #nacos
+      - id: jeecg-cloud-demo-biz
+        uri: lb://jeecg-cloud-demo-biz
+        predicates:
+        - Path=/demo/**
+      - id: jeecg-cloud-system-biz
+        uri: lb://jeecg-cloud-system-biz
+        predicates:
+        - Path=/sys/**,/test/**,/online/**,/api/**,/big/screen/**
+#feign
+feign:
+  sentinel:
+    enabled: true
+resttemplate:
+  sentinel:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

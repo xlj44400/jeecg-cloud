@@ -1,0 +1,44 @@
+
+------author:scott--------date:20200521-------for: 注释掉跨域设置，防止跟gateway跨域设置冲突------
+org/jeecg/modules/shiro/authc/aop/JwtFilter.java
+------author:scott--------date:20200521-------for: 注释掉跨域设置，防止跟gateway跨域设置冲突-------
+
+------author:scott--------date:20200521-------for: 替换tomcat为undertow容器------
+org/jeecg/modules/demo/test/controller/MinioController.java
+------author:scott--------date:20200521-------for: 替换tomcat为undertow容器-------
+
+------author:scott--------date:20200521-------for: 重要： 修改登录逻辑加用户信息换成redis，提供给gateway做jwt token check------
+org/jeecg/modules/system/controller/LoginController.java
+------author:scott--------date:20200521-------for: 重要： 修改登录逻辑加用户信息换成redis，提供给gateway做jwt token check------
+
+------author:scott--------date:20200521-------for: 开放三个fegin 服务接口，提供给权限模块用/rolesSet/{username}、/permissionsSet/{username}、/info/{username}-----
+org/jeecg/modules/system/controller/SysUserController.java
+------author:scott--------date:20200521-------for: 开放三个fegin 服务接口，提供给权限模块用/rolesSet/{username}、/permissionsSet/{username}、/info/{username}-----
+
+------author:scott--------date:20200521-------for: 删除代码生成器GUI工具类-----
+org.jeecg.JeecgOneGUI
+org.jeecg.JeecgOneToMainUtil
+src\main\resources\bootstrap.yml 删除配置文件，换成nacos注册中心
+------author:scott--------date:20200521-------for: 删除代码生成器GUI工具类-----
+
+-- author:taoyan--------date:20200522-------for：定义数据权限相关接口
+src\main\java\org\jeecg\modules\system\controller\SysUserController.java
+-- author:taoyan--------date:20200522-------for：定义数据权限相关接口
+
+-- author:taoyan--------date:20200522-------for：定义添加日志接口
+src\main\java\org\jeecg\modules\system\controller\SysLogController.java
+-- author:taoyan--------date:20200522-------for：定义添加日志接口
+
+-- author:scott--------date:20200525---for: 删除system里的entity\vo\shrio\aop,迁移到 system-api项目里
+org.jeecg.modules.shiro(-)
+org.jeecg.modules.system.aspect(-)
+org.jeecg.modules.system.entity(-)
+org.jeecg.modules.system.model(-)
+org.jeecg.modules.system.vo(-)
+org.jeecg.config.ShiroConfig(-)
+org/jeecg/modules/demo/test/TestWebController.java 变更路径
+-- author:scott--------date:20200525---for: 删除system里的entity\vo\shrio\aop,迁移到 system-api项目里
+
+-- author:scott--------date:20200525---for: system启动类，启动fegin
+org/jeecg/JeecgSystemApplication.java
+-- author:scott--------date:20200525---for: system启动类，启动fegin
